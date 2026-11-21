@@ -20,7 +20,7 @@ export async function GET(req: Request) {
 
   if (url.searchParams.get("sample") === "1") {
     const bytes = await renderPack([SAMPLE_KID], { sample: true });
-    return pdfResponse(bytes, "Checked-Twice-Sample.pdf", true);
+    return pdfResponse(bytes, "Little-North-Pole-Sample.pdf", true);
   }
 
   const paymentId = url.searchParams.get("payment_id") ?? "";

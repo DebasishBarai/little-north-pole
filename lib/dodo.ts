@@ -30,7 +30,7 @@ async function dodo<T>(path: string, init: RequestInit = {}): Promise<T> {
 
 // Kids are stored in payment metadata (one key per child), so no database is needed.
 export async function createCheckout(kids: Kid[], returnUrl: string, cancelUrl: string, email?: string) {
-  const metadata: Record<string, string> = { app: "checked-twice", count: String(kids.length) };
+  const metadata: Record<string, string> = { app: "little-north-pole", count: String(kids.length) };
   kids.forEach((k, i) => (metadata[`kid${i}`] = JSON.stringify(k)));
   const body: Record<string, unknown> = {
     product_cart: [{ product_id: kids.length > 1 ? PRODUCTS.family : PRODUCTS.single, quantity: 1 }],
@@ -64,7 +64,7 @@ export async function getPayment(paymentId: string): Promise<Payment | null> {
 }
 
 export function kidsFromPayment(p: Payment): Kid[] | null {
-  if (p.metadata?.app !== "checked-twice") return null;
+  if (p.metadata?.app !== "little-north-pole") return null;
   const raw: unknown[] = [];
   for (let i = 0; i < MAX_KIDS; i++) {
     const v = p.metadata?.[`kid${i}`];
