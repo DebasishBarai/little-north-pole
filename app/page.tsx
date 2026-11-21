@@ -71,8 +71,8 @@ export default function Home() {
         <div className="pointer-events-none absolute -left-40 top-20 h-[520px] w-[520px] rounded-full bg-pine-2 blur-3xl" />
         <nav className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
           <a href="/" className="flex items-center gap-3">
-            <span className="grid h-9 w-9 place-items-center rounded-full border-2 border-gold-light font-hand text-xl font-bold text-gold-light">✓✓</span>
-            <span className="font-display text-xl tracking-tight">Checked Twice</span>
+            <span className="grid h-9 w-9 place-items-center rounded-full border-2 border-gold-light font-hand text-xl font-bold text-gold-light">❄</span>
+            <span className="font-display text-xl tracking-tight">Little North Pole</span>
           </a>
           <a href="#write" className="hidden rounded-sm border-2 border-snow/70 px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.16em] transition hover:bg-snow hover:text-pine sm:block">
             Make my video
@@ -220,7 +220,7 @@ export default function Home() {
 
       <footer className="bg-pine text-snow/60">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-8 font-mono text-xs">
-          <span>© Checked Twice. Made with cocoa.</span>
+          <span>© Little North Pole. Made with cocoa.</span>
           <span>Santa Claus and his elves are characters of folklore. Letters are written for families to share.</span>
         </div>
       </footer>

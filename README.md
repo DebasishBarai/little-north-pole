@@ -1,4 +1,4 @@
-# Checked Twice
+# Little North Pole
 
 A personalized animated Santa video (rendered in the browser, MP4 download) plus printable letter, Nice List certificate, envelope and Nice List page.
 

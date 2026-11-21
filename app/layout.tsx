@@ -11,7 +11,7 @@ import "@fontsource/homemade-apple";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Checked Twice · A personal Santa video and letter for your child",
+  title: "Little North Pole · A personal Santa video and letter for your child",
   description:
     "A personal animated video from Santa starring your child, about the good things they did this year. Plus a printable letter, Nice List certificate and envelope. Ready tonight.",
   openGraph: {

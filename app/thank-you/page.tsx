@@ -3,14 +3,14 @@ import { getPayment, kidsFromPayment } from "@/lib/dodo";
 import OrderVideos from "@/components/OrderVideos";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Your Santa video and letters · Checked Twice", robots: { index: false } };
+export const metadata = { title: "Your Santa video and letters · Little North Pole", robots: { index: false } };
 
 function Shell({ children }: { children: React.ReactNode }) {
   return (
     <main className="grain min-h-screen">
       <div className="airmail h-2" />
       <div className="mx-auto max-w-3xl px-6 py-20">
-        <Link href="/" className="font-display text-xl">Checked Twice</Link>
+        <Link href="/" className="font-display text-xl">Little North Pole</Link>
         <div className="mt-12">{children}</div>
       </div>
     </main>
