@@ -5,6 +5,7 @@ import Countdown from "@/components/Countdown";
 import VideoPlayer from "@/components/VideoPlayer";
 import { SAMPLE_KID } from "@/lib/letter";
 import { CertificateMini, EnvelopeMini, NiceListMini } from "@/components/PackPages";
+import { SITE } from "@/lib/site";
 
 const INSIDE = [
   {
@@ -221,7 +222,13 @@ export default function Home() {
       <footer className="bg-pine text-snow/60">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-8 font-mono text-xs">
           <span>© Little North Pole. Made with cocoa.</span>
-          <span>Santa Claus and his elves are characters of folklore. Letters are written for families to share.</span>
+          <nav className="flex flex-wrap gap-5">
+            <a href="/privacy" className="hover:text-snow">Privacy</a>
+            <a href="/terms" className="hover:text-snow">Terms</a>
+            <a href="/refund" className="hover:text-snow">Refunds</a>
+            <a href={`mailto:${SITE.email}`} className="hover:text-snow">{SITE.email}</a>
+          </nav>
+          <span className="w-full opacity-70">Santa Claus and his elves are characters of folklore. Letters are written for families to share.</span>
         </div>
       </footer>
     </main>

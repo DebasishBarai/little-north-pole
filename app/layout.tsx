@@ -9,8 +9,10 @@ import "@fontsource/caveat/500.css";
 import "@fontsource/caveat/700.css";
 import "@fontsource/homemade-apple";
 import "./globals.css";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE.url),
   title: "Little North Pole · A personal Santa video and letter for your child",
   description:
     "A personal animated video from Santa starring your child, about the good things they did this year. Plus a printable letter, Nice List certificate and envelope. Ready tonight.",
@@ -18,7 +20,10 @@ export const metadata: Metadata = {
     title: "A personal Santa video starring your child, ready tonight",
     description: "Santa checks the Nice List, reads the elves' report on their good deed and approves their wish. Plus printable letter and certificate.",
     type: "website",
+    siteName: SITE.name,
+    url: SITE.url,
   },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -12,6 +12,11 @@ function Shell({ children }: { children: React.ReactNode }) {
       <div className="mx-auto max-w-3xl px-6 py-20">
         <Link href="/" className="font-display text-xl">Little North Pole</Link>
         <div className="mt-12">{children}</div>
+        <p className="mt-16 flex gap-5 font-mono text-xs text-ink/50">
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/terms">Terms</Link>
+          <Link href="/refund">Refunds</Link>
+        </p>
       </div>
     </main>
   );

@@ -401,7 +401,7 @@ export async function renderPack(kids: Kid[], opts: { sample?: boolean } = {}): 
   const year = christmasYear();
   doc.setTitle(`Letters from Santa for ${kids.map((k) => k.name).join(", ")}`);
   doc.setAuthor("Santa Claus, North Pole");
-  doc.setCreator("Checked Twice");
+  doc.setCreator("Little North Pole");
 
   const pages: PDFPage[] = [];
   kids.forEach((kid, i) => {
