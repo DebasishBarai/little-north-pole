@@ -24,6 +24,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <script defer src="https://www.ship-or-die.com/hackathon/verify.js" data-site="986189b0c8b02d20bd762b98cb28d9ffdf6a7398"></script>
+      </head>
       <body>
         {children}
         <Analytics />
