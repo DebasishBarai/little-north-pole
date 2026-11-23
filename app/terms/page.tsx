@@ -21,7 +21,7 @@ export default function Terms() {
 
       <h2>Payment</h2>
       <p>
-        Orders are processed by Dodo Payments, which acts as the merchant of record and handles payment, invoicing and applicable sales taxes. Prices are shown in US dollars before
+        Orders are processed by Polar (polar.sh), which acts as the merchant of record and handles payment, invoicing and applicable sales taxes. Prices are shown in US dollars before
         checkout.
       </p>
 
