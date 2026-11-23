@@ -22,7 +22,7 @@ export default function Privacy() {
           <b>Your email address</b>, used for your receipt and to help you find your order again.
         </li>
         <li>
-          <b>Payment information</b>, which is entered on and handled by our payment provider, Dodo Payments. We never see or store your card details.
+          <b>Payment information</b>, which is entered on and handled by our payment provider, Polar (polar.sh). We never see or store your card details.
         </li>
         <li>
           <b>Basic, anonymous usage data</b> such as pages visited, collected by Vercel Web Analytics (no cookies) and by the Ship or Die hackathon traffic checker, which counts
@@ -38,12 +38,12 @@ export default function Privacy() {
 
       <h2>Where it is stored</h2>
       <p>
-        The letter details are saved with your payment record at Dodo Payments so your download link keeps working. The video is made in your own browser, and the PDF is generated
+        The letter details are saved with your order record at Polar so your download link keeps working. The video is made in your own browser, and the PDF is generated
         on demand and not stored. The website is hosted by Vercel.
       </p>
 
       <h2>How long we keep it</h2>
-      <p>Order details are kept for as long as Dodo Payments keeps the payment record, which tax and accounting rules require. You can ask us to remove the letter details sooner.</p>
+      <p>Order details are kept for as long as Polar keeps the payment record, which tax and accounting rules require. You can ask us to remove the letter details sooner.</p>
 
       <h2>Children&apos;s privacy</h2>
       <p>

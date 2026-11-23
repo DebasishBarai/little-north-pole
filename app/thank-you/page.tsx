@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { getPayment, kidsFromPayment } from "@/lib/dodo";
+import { getPurchase, kidsFromPurchase } from "@/lib/polar";
+import { SITE } from "@/lib/site";
 import OrderVideos from "@/components/OrderVideos";
 
 export const dynamic = "force-dynamic";
@@ -28,9 +29,11 @@ function FindOrder({ note }: { note?: string }) {
       <div className="label text-berry">Lost your letters?</div>
       <h1 className="mt-3 font-display text-4xl">Find your order</h1>
       {note && <p className="mt-4 text-lg text-berry">{note}</p>}
-      <p className="mt-4 text-lg text-ink/70">Paste the payment ID from your receipt email. It starts with <span className="font-mono">pay_</span>.</p>
+      <p className="mt-4 text-lg text-ink/70">
+        Paste your order ID from your Polar receipt. Can&apos;t find it? Email <a className="underline" href={`mailto:${SITE.email}`}>{SITE.email}</a> and the elves will send your link.
+      </p>
       <form className="mt-8 flex gap-3" action="/thank-you">
-        <input name="payment_id" className="field flex-1 !font-mono !text-lg" placeholder="pay_..." required />
+        <input name="order_id" className="field flex-1 !font-mono !text-lg" placeholder="Order ID" required />
         <button className="rounded-sm bg-berry px-5 font-mono text-sm font-bold uppercase tracking-[0.14em] text-snow">Find</button>
       </form>
     </Shell>
@@ -39,14 +42,14 @@ function FindOrder({ note }: { note?: string }) {
 
 export default async function ThankYou({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
   const sp = await searchParams;
-  const paymentId = sp.payment_id ?? "";
-  if (!paymentId) return <FindOrder />;
+  const id = (sp.checkout_id ?? sp.order_id ?? "").trim();
+  if (!id) return <FindOrder />;
 
-  const payment = await getPayment(paymentId);
-  if (!payment) return <FindOrder note="We couldn't find that order. Double check the payment ID." />;
+  const purchase = await getPurchase(id);
+  if (!purchase) return <FindOrder note="We couldn't find that order. Double check the order ID." />;
 
-  if (payment.status !== "succeeded") {
-    const failed = ["failed", "cancelled"].includes(payment.status ?? "");
+  if (purchase.state !== "paid") {
+    const failed = purchase.state === "failed";
     return (
       <Shell>
         {!failed && <meta httpEquiv="refresh" content="4" />}
@@ -64,10 +67,10 @@ export default async function ThankYou({ searchParams }: { searchParams: Promise
     );
   }
 
-  const kids = kidsFromPayment(payment) ?? [];
+  const kids = kidsFromPurchase(purchase) ?? [];
   const names = kids.map((k) => k.name);
   const nameText = names.length > 1 ? `${names.slice(0, -1).join(", ")} and ${names.at(-1)}` : names[0] ?? "your little one";
-  const href = `/api/pdf?payment_id=${encodeURIComponent(paymentId)}`;
+  const href = `/api/pdf?id=${encodeURIComponent(id)}`;
 
   return (
     <Shell>

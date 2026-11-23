@@ -23,7 +23,7 @@ export default function Refund() {
 
       <h2>How refunds are paid</h2>
       <p>
-        Refunds are issued through Dodo Payments to your original payment method. Depending on your bank, they usually appear within 5 to 10 business days.
+        Refunds are issued through Polar (polar.sh) to your original payment method. Depending on your bank, they usually appear within 5 to 10 business days.
       </p>
     </LegalPage>
   );

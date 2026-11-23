@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { validateKids } from "@/lib/letter";
-import { createCheckout, dodoConfigured } from "@/lib/dodo";
+import { createCheckout, polarConfigured } from "@/lib/polar";
 
 export const runtime = "nodejs";
 
@@ -13,7 +13,7 @@ function origin(req: Request) {
 }
 
 export async function POST(req: Request) {
-  if (!dodoConfigured()) {
+  if (!polarConfigured()) {
     return NextResponse.json({ error: "Checkout is being set up. Please try again in a little while." }, { status: 503 });
   }
   let body: { kids?: unknown; email?: unknown };
@@ -28,9 +28,9 @@ export async function POST(req: Request) {
   const email = typeof body.email === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email) ? body.email.trim() : undefined;
   const base = origin(req);
   try {
-    const session = await createCheckout(kids, `${base}/thank-you`, `${base}/#write`, email);
-    if (!session.checkout_url) throw new Error("No checkout_url");
-    return NextResponse.json({ url: session.checkout_url });
+    const checkout = await createCheckout(kids, `${base}/thank-you?checkout_id={CHECKOUT_ID}`, `${base}/#write`, email);
+    if (!checkout.url) throw new Error("No checkout url");
+    return NextResponse.json({ url: checkout.url });
   } catch (e) {
     console.error(e);
     return NextResponse.json({ error: "Could not start checkout. Please try again." }, { status: 502 });

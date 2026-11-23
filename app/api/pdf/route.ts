@@ -1,6 +1,6 @@
 import { renderPack } from "@/lib/pdf";
 import { SAMPLE_KID } from "@/lib/letter";
-import { getPayment, kidsFromPayment } from "@/lib/dodo";
+import { getPurchase, kidsFromPurchase } from "@/lib/polar";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -23,12 +23,12 @@ export async function GET(req: Request) {
     return pdfResponse(bytes, "Little-North-Pole-Sample.pdf", true);
   }
 
-  const paymentId = url.searchParams.get("payment_id") ?? "";
-  const payment = await getPayment(paymentId);
-  if (!payment) return new Response("We couldn't find that order.", { status: 404 });
-  if (payment.status !== "succeeded") return new Response("This payment hasn't completed yet.", { status: 402 });
+  const id = url.searchParams.get("id") ?? "";
+  const purchase = await getPurchase(id);
+  if (!purchase) return new Response("We couldn't find that order.", { status: 404 });
+  if (purchase.state !== "paid") return new Response("This payment hasn't completed yet.", { status: 402 });
 
-  const kids = kidsFromPayment(payment);
+  const kids = kidsFromPurchase(purchase);
   if (!kids) return new Response("This order has no letter details. Please reply to your receipt email.", { status: 422 });
 
   const bytes = await renderPack(kids);
